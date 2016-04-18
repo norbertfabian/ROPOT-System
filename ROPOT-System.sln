@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{6B72
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{AB148E40-0925-40FB-AB1C-E255D9575934}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ROPOT-System", "ROPOT-System\ROPOT-System.csproj", "{73F55756-DD0E-490C-B64B-8CA02840805A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AB148E40-0925-40FB-AB1C-E255D9575934}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB148E40-0925-40FB-AB1C-E255D9575934}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB148E40-0925-40FB-AB1C-E255D9575934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F55756-DD0E-490C-B64B-8CA02840805A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F55756-DD0E-490C-B64B-8CA02840805A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F55756-DD0E-490C-B64B-8CA02840805A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F55756-DD0E-490C-B64B-8CA02840805A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
