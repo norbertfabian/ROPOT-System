@@ -14,6 +14,7 @@ namespace BL.DTO
         public string Name { get; set; }
         public string Surname { get; set; }
         public RoleDTO role { get; set; }
+        public List<StudentGroupDTO> studentGroups { get; set; }
 
         public UserDTO()
         {
