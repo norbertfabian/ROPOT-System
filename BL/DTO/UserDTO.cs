@@ -13,8 +13,8 @@ namespace BL.DTO
         public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public RoleDTO role { get; set; }
-        public List<StudentGroupDTO> studentGroups { get; set; }
+        public RoleDTO Role { get; set; }
+        public List<StudentGroupDTO> StudentGroups { get; set; }
 
         public UserDTO()
         {
