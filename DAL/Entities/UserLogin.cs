@@ -7,13 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.Entities
 {
-    public class Role : IdentityRole<int, UserRole>
+    public class UserLogin : IdentityUserLogin<int>
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public Role()
-        {
-
-        }
     }
 }

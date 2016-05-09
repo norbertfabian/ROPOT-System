@@ -13,6 +13,7 @@ namespace ROPOT_System
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Printing out created test question:");
             QuestionFacade questionFacade = new QuestionFacade();
             questionFacade.Create(CreateQuestionDto());
 

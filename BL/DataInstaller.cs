@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using DAL;
+using BL;
 using BL.Facades;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using DAL.Entities;
 
 namespace BL
 {
@@ -16,6 +20,10 @@ namespace BL
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
+                Component.For<AppDbContext>()
+                .Instance(new AppDbContext())
+                .LifestyleTransient(),
+
                 Component.For<AppDbContext>()
                 .Instance(new AppDbContext())
                 .LifestyleTransient(),
@@ -48,7 +56,6 @@ namespace BL
                 .Instance(new UserFacade())
                 .LifestyleTransient()
             );
-            
         }
     }
 }
