@@ -56,5 +56,14 @@ namespace BL.Facades
                 return dtos;
             }
         }
+
+        public TopicDTO FindById(int id)
+        {
+            using (var context = new AppDbContext())
+            {
+                return Mapping.Mapper.Map<TopicDTO>(
+                    context.Topics.Find(id));
+            }
+        }
     }
 }

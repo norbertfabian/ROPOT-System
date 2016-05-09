@@ -56,5 +56,14 @@ namespace BL.Facades
                 return dtos;
             }
         }
+
+        public RoleDTO FindById(int id)
+        {
+            using (var context = new AppDbContext())
+            {
+                return Mapping.Mapper.Map<RoleDTO>(
+                    context.Roles.Find(id));
+            }
+        }
     }
 }

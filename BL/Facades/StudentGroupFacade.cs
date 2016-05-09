@@ -69,5 +69,14 @@ namespace BL.Facades
                 return dtos;
             }
         }
+
+        public StudentGroupDTO FindById(int id)
+        {
+            using (var context = new AppDbContext())
+            {
+                return Mapping.Mapper.Map<StudentGroupDTO>(
+                    context.StudentGroups.Find(id));
+            }
+        }
     }
 }
