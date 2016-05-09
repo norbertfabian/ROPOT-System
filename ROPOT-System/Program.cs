@@ -13,22 +13,6 @@ namespace ROPOT_System
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Creating roleDTO");
-            RoleDTO role = new RoleDTO();
-            Console.Write("Enter role name: ");
-            role.Name = Console.ReadLine();
-            Console.Write("Enter role description: ");
-            role.Description = Console.ReadLine();
-            RoleFacade roleFacade = new RoleFacade();
-            roleFacade.Create(role);
-
-            Console.WriteLine("Role from localdb: ");
-            foreach (var item in roleFacade.ListAll())
-            {
-                Console.WriteLine("Name: " + item.Name);
-                Console.WriteLine("Description: " + item.Description);
-            }
-
             QuestionFacade questionFacade = new QuestionFacade();
             questionFacade.Create(CreateQuestionDto());
 
@@ -45,7 +29,6 @@ namespace ROPOT_System
 
             Console.ReadKey();
         }
-
         private static QuestionDTO CreateQuestionDto()
         {
             QuestionDTO question = new QuestionDTO() { Description = "Option" };
