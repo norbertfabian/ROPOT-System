@@ -56,19 +56,6 @@ namespace BL.Facades
             }
         }
 
-        public List<QuestionDTO> ListAllIncluded()
-        {
-            using (var context = new AppDbContext())
-            {
-                List<QuestionDTO> dtos = new List<QuestionDTO>();
-                foreach (var entity in context.Questions.Include("Topic").Include("Options").ToList())
-                {
-                    dtos.Add(Mapping.Mapper.Map<QuestionDTO>(entity));
-                }
-                return dtos;
-            }
-        }
-
         public QuestionDTO FindById(int id)
         {
             using (var context = new AppDbContext())

@@ -10,8 +10,8 @@ namespace DAL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Topic Parent { get; set; }
-        public List<Question> questions { get; set; }
+        public virtual Topic Parent { get; set; }
+        public virtual List<Question> questions { get; set; }
         public Topic()
         {
 

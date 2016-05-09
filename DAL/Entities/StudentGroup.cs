@@ -10,7 +10,7 @@ namespace DAL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<User> Students { get; set; }
+        public virtual List<User> Students { get; set; }
         public StudentGroup()
         {
             Students = new List<User>();

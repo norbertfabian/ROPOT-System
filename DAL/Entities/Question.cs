@@ -14,9 +14,9 @@ namespace DAL.Entities
         public bool OneCorrectType { get; set; }
         public float Points { get; set; }
         [Required]
-        public Topic Topic { get; set; }
+        public virtual Topic Topic { get; set; }
         [Required]
-        public List<Option> Options { get; set; }
+        public virtual List<Option> Options { get; set; }
         public Question()
         {
             Options = new List<Option>();

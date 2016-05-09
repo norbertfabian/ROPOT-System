@@ -13,8 +13,8 @@ namespace DAL.Entities
         public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Role role { get; set; }
-        public List<StudentGroup> studentGroups { get; set; }
+        public virtual Role role { get; set; }
+        public virtual List<StudentGroup> studentGroups { get; set; }
         public User()
         {
 
