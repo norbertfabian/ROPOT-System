@@ -1,0 +1,47 @@
+﻿@model Web.Models.TopicEditViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Topic</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Topics)
+        <div class="form-group">
+            @Html.LabelFor(mode => Model.Topic.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Topic.Name, new { htmlAttribute = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Topic.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Topic.Parent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.SelectedParent,
+               new SelectList(Model.Topics, "Id", "Name", Model.Topics.First().Id),
+               "Please select parent role")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

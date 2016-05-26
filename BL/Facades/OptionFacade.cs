@@ -36,6 +36,7 @@ namespace BL.Facades
         public void Update(OptionDTO dto)
         {
             Option entity = Mapping.Mapper.Map<Option>(dto);
+            Mapping.Mapper.Map<OptionDTO, Option>(dto, entity);
 
             using (var context = new AppDbContext())
             {

@@ -36,6 +36,7 @@ namespace BL.Facades
         public void Update(QuestionDTO dto)
         {
             Question entity = Mapping.Mapper.Map<Question>(dto);
+            Mapping.Mapper.Map<QuestionDTO, Question>(dto, entity);
 
             using (var context = new AppDbContext())
             {

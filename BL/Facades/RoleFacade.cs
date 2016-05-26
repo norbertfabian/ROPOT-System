@@ -38,6 +38,7 @@ namespace BL.Facades
         public void Update(RoleDTO dto)
         {
             Role entity = Mapping.Mapper.Map<Role>(dto);
+            Mapping.Mapper.Map<RoleDTO, Role>(dto, entity);
 
             using (var context = new AppDbContext())
             {

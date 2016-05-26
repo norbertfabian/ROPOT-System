@@ -13,6 +13,11 @@ namespace ROPOT_System
     {
         static void Main(string[] args)
         {
+            TopicFacade topicFacade = new TopicFacade(new DAL.AppDbContext());
+            topicFacade.Create(CreateTopicDto());
+
+            Console.WriteLine($"Topic: {topicFacade.ListAll()}");
+
             Console.WriteLine("Printing out created test question:");
             QuestionFacade questionFacade = new QuestionFacade();
             questionFacade.Create(CreateQuestionDto());
@@ -42,6 +47,11 @@ namespace ROPOT_System
             question.Options.Add(option2);
 
             return question;
+        }
+        
+        private static TopicDTO CreateTopicDto()
+        {
+            return new TopicDTO() { Name = "Name" };
         }
     }
 }

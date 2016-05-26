@@ -18,7 +18,8 @@ namespace DAL
         public DbSet<Option> Options { get; set; }
         public AppDbContext() : base()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<AppDbContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<AppDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<AppDbContext>());
         }
     }
 }

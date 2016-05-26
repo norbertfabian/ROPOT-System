@@ -11,72 +11,65 @@ namespace BL.Facades
 {
     public class StudentGroupFacade
     {
+        private readonly AppDbContext context;
+        public StudentGroupFacade(AppDbContext context)
+        {
+            this.context = context;
+        }
+
         public void Create(StudentGroupDTO dto)
         {
             StudentGroup entity = Mapping.Mapper.Map<StudentGroup>(dto);
-
-            using (var context = new AppDbContext())
-            {
-                context.StudentGroups.Add(entity);
-                context.SaveChanges();
-            }
+            context.StudentGroups.Add(entity);
+            context.SaveChanges();            
         }
 
         public void Remove(StudentGroupDTO dto)
         {
             StudentGroup entity = Mapping.Mapper.Map<StudentGroup>(dto);
+            context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+            context.SaveChanges();
+        }
 
-            using (var context = new AppDbContext())
-            {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-                context.SaveChanges();
-            }
+        public void RemoveById(int id)
+        {
+            var toDelete = context.StudentGroups.Where(x => x.Id == id).FirstOrDefault();
+            context.StudentGroups.Remove(toDelete);
+            context.SaveChanges();
         }
 
         public void Update(StudentGroupDTO dto)
         {
-            StudentGroup entity = Mapping.Mapper.Map<StudentGroup>(dto);
-
-            using (var context = new AppDbContext())
-            {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
-            }
+            var entity = context.StudentGroups.Find(dto.Id);
+            context.Entry(entity).CurrentValues.SetValues(Mapping.Mapper.Map<StudentGroup>(dto));
+            context.SaveChanges();            
         }
 
         public List<StudentGroupDTO> ListAll()
         {
-            using (var context = new AppDbContext())
+            List<StudentGroupDTO> dtos = new List<StudentGroupDTO>();
+            foreach (var entity in context.StudentGroups.ToList())
             {
-                List<StudentGroupDTO> dtos = new List<StudentGroupDTO>();
-                foreach (var entity in context.StudentGroups.ToList())
-                {
-                    dtos.Add(Mapping.Mapper.Map<StudentGroupDTO>(entity));
-                }
-                return dtos;
+                dtos.Add(Mapping.Mapper.Map<StudentGroupDTO>(entity));
             }
+            return dtos;
+            
         }
 
         public List<StudentGroupDTO> ListAllWithStudents()
         {
-            using (var context = new AppDbContext())
+            List<StudentGroupDTO> dtos = new List<StudentGroupDTO>();
+            foreach (var entity in context.StudentGroups.Include("Students").ToList())
             {
-                List<StudentGroupDTO> dtos = new List<StudentGroupDTO>();
-                foreach (var entity in context.StudentGroups.Include("Students").ToList())
-                {
-                    dtos.Add(Mapping.Mapper.Map<StudentGroupDTO>(entity));
-                }
-                return dtos;
+                dtos.Add(Mapping.Mapper.Map<StudentGroupDTO>(entity));
             }
+            return dtos;            
         }
 
         public StudentGroupDTO FindById(int id)
         {
-            using (var context = new AppDbContext())
-            {
-                return Mapping.Mapper.Map<StudentGroupDTO>(
-                    context.StudentGroups.Find(id));
-            }
+            return Mapping.Mapper.Map<StudentGroupDTO>(
+            context.StudentGroups.Find(id));
         }
     }
 }

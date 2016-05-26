@@ -1,0 +1,51 @@
+﻿@model Web.Models.UserProfileModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>Profile</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.User.Email)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Name)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.User.Name)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Surname)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.User.Surname)
+            </td>
+        </tr>
+    </table>
+
+        <h4>User groups</h4>
+        @foreach (var item in Model.User.StudentGroups)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+            </tr>
+        }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.User.Id  })
+</p>

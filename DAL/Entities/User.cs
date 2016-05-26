@@ -9,7 +9,6 @@ namespace DAL.Entities
 {
     public class User : IdentityUser<int, UserLogin, UserRole, UserClaim>
     {
-        public string Email { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

@@ -69,8 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BussinessRoleManager.cs" />
-    <Compile Include="BussinessUserManager.cs" />
+    <Compile Include="AppRoleManager.cs" />
+    <Compile Include="AppRoleStore.cs" />
+    <Compile Include="AppUserManager.cs" />
+    <Compile Include="AppUserStore.cs" />
     <Compile Include="DataInstaller.cs" />
     <Compile Include="DTO\OptionDTO.cs" />
     <Compile Include="DTO\QuestionDTO.cs" />
@@ -78,7 +80,10 @@
     <Compile Include="DTO\StudentGroupDTO.cs" />
     <Compile Include="DTO\TestSchemeDTO.cs" />
     <Compile Include="DTO\TopicDTO.cs" />
+    <Compile Include="DTO\UserClaimDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\UserLoginDTO.cs" />
+    <Compile Include="DTO\UserRoleDTO.cs" />
     <Compile Include="Facades\OptionFacade.cs" />
     <Compile Include="Facades\QuestionFacade.cs" />
     <Compile Include="Facades\RoleFacade.cs" />
@@ -88,6 +93,7 @@
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Mapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\StudentGroupUserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

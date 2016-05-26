@@ -9,7 +9,6 @@ namespace DAL.Entities
 {
     public class Role : IdentityRole<int, UserRole>
     {
-        public string Name { get; set; }
         public string Description { get; set; }
         public Role()
         {

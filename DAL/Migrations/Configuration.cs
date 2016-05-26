@@ -13,7 +13,7 @@ namespace DAL.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(DAL.AppDbContext context)
+        protected override void Seed(AppDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -27,6 +27,14 @@ namespace DAL.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Topics.AddOrUpdate(
+                new Topic { Name = "BaseTopic" }
+                );
+
+            context.Roles.AddOrUpdate(
+                new Role { Name = "Student"},
+                new Role { Name = "Teacher"}
+                );
         }
     }
 }

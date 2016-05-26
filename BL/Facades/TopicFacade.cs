@@ -11,59 +11,82 @@ namespace BL.Facades
 {
     public class TopicFacade
     {
+        private readonly AppDbContext context;
+
+        public TopicFacade(AppDbContext context)
+        {
+            this.context = context;
+        }
+
         public void Create(TopicDTO dto)
         {
-            Topic entity = Mapping.Mapper.Map<Topic>(dto);
+            Create(dto, -1);
+        }
 
-            using (var context = new AppDbContext())
+        public void Create(TopicDTO dto, int parentId)
+        {
+            Topic entity = Mapping.Mapper.Map<Topic>(dto);
+            context.Topics.Add(entity);
+
+            if (parentId >= 0)
             {
-                context.Topics.Add(entity);
-                context.SaveChanges();
+                Topic parent = context.Topics.Find(parentId);
+                parent.Childs.Add(entity);
+                entity.Parent = parent;
+
             }
+            context.SaveChanges();
+
         }
 
         public void Remove(TopicDTO dto)
         {
             Topic entity = Mapping.Mapper.Map<Topic>(dto);
-
-            using (var context = new AppDbContext())
-            {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-                context.SaveChanges();
-            }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+            context.SaveChanges();            
         }
 
-        public void Update(RoleDTO dto)
+        public void Update(TopicDTO dto)
         {
-            Topic entity = Mapping.Mapper.Map<Topic>(dto);
+            Update(dto, -1);            
+        }
 
-            using (var context = new AppDbContext())
+        public void Update(TopicDTO dto, int parentId)
+        {
+            Topic entity = context.Topics.Find(dto.Id);
+            Mapping.Mapper.Map<TopicDTO, Topic>(dto, entity);
+            if (parentId >= 0)
             {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
+                Topic parent = context.Topics.Find(parentId);
+                parent.Childs.Add(entity);
+                entity.Parent = parent;
+                context.Entry(parent).State = System.Data.Entity.EntityState.Modified;
             }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+        }
+
+        public void RemoveById(int id)
+        {
+            var toDelete = context.Topics.Where(x => x.Id == id).FirstOrDefault();
+            context.Topics.Remove(toDelete);
+            context.SaveChanges();            
         }
 
         public List<TopicDTO> ListAll()
         {
-            using (var context = new AppDbContext())
+            List<TopicDTO> dtos = new List<TopicDTO>();
+            foreach (var entity in context.Topics.ToList())
             {
-                List<TopicDTO> dtos = new List<TopicDTO>();
-                foreach (var entity in context.Roles.ToList())
-                {
-                    dtos.Add(Mapping.Mapper.Map<TopicDTO>(entity));
-                }
-                return dtos;
+                dtos.Add(Mapping.Mapper.Map<TopicDTO>(entity));
             }
+            return dtos;            
         }
 
         public TopicDTO FindById(int id)
         {
-            using (var context = new AppDbContext())
-            {
-                return Mapping.Mapper.Map<TopicDTO>(
-                    context.Topics.Find(id));
-            }
+            return Mapping.Mapper.Map<TopicDTO>(
+            context.Topics.Find(id));            
         }
     }
 }

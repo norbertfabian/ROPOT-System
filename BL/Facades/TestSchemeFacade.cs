@@ -36,6 +36,7 @@ namespace BL.Facades
         public void Update(TestSchemeDTO dto)
         {
             TestScheme entity = Mapping.Mapper.Map<TestScheme>(dto);
+            Mapping.Mapper.Map<TestSchemeDTO, TestScheme>(dto, entity);
 
             using (var context = new AppDbContext())
             {
