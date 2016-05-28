@@ -12,61 +12,50 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace BL.Facades
 {
     public class RoleFacade
-    {       
+    {
+        AppDbContext context = new AppDbContext();
+
+        public RoleFacade(AppDbContext context)
+        {
+            this.context = context;
+        }
+
         public void Create(RoleDTO dto)
         {
             Role entity = Mapping.Mapper.Map<Role>(dto);
-
-            using (var context = new AppDbContext())
-            {
-                context.Roles.Add(entity);
-                context.SaveChanges();
-            }
+            context.Roles.Add(entity);
+            context.SaveChanges();
         }
 
         public void Remove(RoleDTO dto)
         {
             Role entity = Mapping.Mapper.Map<Role>(dto);
-
-            using (var context = new AppDbContext())
-            {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-                context.SaveChanges();
-            }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+            context.SaveChanges();
         }
 
         public void Update(RoleDTO dto)
         {
             Role entity = Mapping.Mapper.Map<Role>(dto);
             Mapping.Mapper.Map<RoleDTO, Role>(dto, entity);
-
-            using (var context = new AppDbContext())
-            {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
-            }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
         }
 
         public List<RoleDTO> ListAll()
         {
-            using (var context = new AppDbContext())
+            List<RoleDTO> dtos = new List<RoleDTO>();
+            foreach (var entity in context.Roles.ToList())
             {
-                List<RoleDTO> dtos = new List<RoleDTO>();
-                foreach (var entity in context.Roles.ToList())
-                {
-                    dtos.Add(Mapping.Mapper.Map<RoleDTO>(entity));
-                }
-                return dtos;
+                dtos.Add(Mapping.Mapper.Map<RoleDTO>(entity));
             }
+            return dtos;
         }
 
         public RoleDTO FindById(int id)
         {
-            using (var context = new AppDbContext())
-            {
-                return Mapping.Mapper.Map<RoleDTO>(
-                    context.Roles.Find(id));
-            }
+            return Mapping.Mapper.Map<RoleDTO>(
+                 context.Roles.Find(id));
         }
     }
 }

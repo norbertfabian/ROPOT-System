@@ -26,6 +26,7 @@ namespace BL
                 c.CreateMap<UserRole, UserRoleDTO>().ReverseMap();
                 c.CreateMap<UserLogin, UserLoginDTO>().ReverseMap();
                 c.CreateMap<UserClaim, UserClaimDTO>().ReverseMap();
+                c.CreateMap<Test, TestDTO>().ReverseMap();
             });
 
             Mapper = config.CreateMapper();

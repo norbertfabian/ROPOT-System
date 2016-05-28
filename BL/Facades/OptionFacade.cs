@@ -11,60 +11,50 @@ namespace BL.Facades
 {
     public class OptionFacade
     {
+        private readonly AppDbContext context;
+
+        public OptionFacade(AppDbContext context)
+        {
+            this.context = context;
+        }
+
         public void Create(OptionDTO dto)
         {
             Option entity = Mapping.Mapper.Map<Option>(dto);
-
-            using (var context = new AppDbContext())
-            {
-                context.Options.Add(entity);
-                context.SaveChanges();
-            }
+            entity.Question = context.Questions.Find(dto.Question.Id);
+            context.Options.Add(entity);
+            context.SaveChanges();
         }
 
         public void Remove(OptionDTO dto)
         {
             Option entity = Mapping.Mapper.Map<Option>(dto);
-
-            using (var context = new AppDbContext())
-            {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-                context.SaveChanges();
-            }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+            context.SaveChanges();
         }
 
         public void Update(OptionDTO dto)
         {
             Option entity = Mapping.Mapper.Map<Option>(dto);
             Mapping.Mapper.Map<OptionDTO, Option>(dto, entity);
-
-            using (var context = new AppDbContext())
-            {
-                context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
-            }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
         }
 
         public List<OptionDTO> ListAll()
         {
-            using (var context = new AppDbContext())
+            List<OptionDTO> dtos = new List<OptionDTO>();
+            foreach (var entity in context.Options.ToList()) 
             {
-                List<OptionDTO> dtos = new List<OptionDTO>();
-                foreach (var entity in context.Options.ToList()) 
-                {
-                    dtos.Add(Mapping.Mapper.Map<OptionDTO>(entity));
-                }
-                return dtos;
+                dtos.Add(Mapping.Mapper.Map<OptionDTO>(entity));
             }
+            return dtos;
         }
 
         public OptionDTO FindById(int id)
         {
-            using (var context = new AppDbContext())
-            {
-                return Mapping.Mapper.Map<OptionDTO>(
-                    context.Options.Find(id));
-            }
+            return Mapping.Mapper.Map<OptionDTO>(
+                context.Options.Find(id));
         }
     }
 }

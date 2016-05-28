@@ -11,7 +11,7 @@ namespace BL.DTO
         public int Id { get; set; }
         public string Description { get; set; }
         public bool OneCorrectType { get; set; }
-        public float Points { get; set; }
+        public int Points { get; set; }
         public TopicDTO Topic { get; set; }
         public List<OptionDTO> Options { get; set; }
 

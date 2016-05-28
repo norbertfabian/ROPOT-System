@@ -19,7 +19,7 @@ namespace ROPOT_System
             Console.WriteLine($"Topic: {topicFacade.ListAll()}");
 
             Console.WriteLine("Printing out created test question:");
-            QuestionFacade questionFacade = new QuestionFacade();
+            QuestionFacade questionFacade = new QuestionFacade(new DAL.AppDbContext());
             questionFacade.Create(CreateQuestionDto());
 
             foreach (var item in questionFacade.ListAll())

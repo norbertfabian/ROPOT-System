@@ -22,11 +22,13 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Topics", "Index", "Topic")</li>
-                    <li>@Html.ActionLink("Student groups", "Index", "StudentGroup")</li>                  
+                    <li>@Html.ActionLink("Student groups", "Index", "StudentGroup")</li>
+                    <li>@Html.ActionLink("Test schemes", "Index", "TestScheme")</li>   
+                    <li>@Html.ActionLink("Questions", "Index", "Question")</li>              
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Joing group", "JoinGroup", "StudentGroup")</li>
-                        <li>@Html.ActionLink("Profile", "Index", "Profile")</li>
+                        <li>@Html.ActionLink("My tests", "MyTests", "TestScheme")</li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

@@ -48,7 +48,22 @@ namespace BL
                 Component.For<UserFacade>()
                 .LifestyleTransient(),
 
+                Component.For<TestFacade>()
+                .LifestyleTransient(),
+
                 Component.For<StudentGroupUserService>()
+                .LifestyleTransient(),
+
+                Component.For<QuestionOptionService>()
+                .LifestyleTransient(),
+
+                Component.For<StudentGroupTestSchemeService>()
+                .LifestyleTransient(),
+
+                Component.For<TopicQuestionService>()
+                .LifestyleTransient(),
+
+                Component.For<TestService>()
                 .LifestyleTransient(),
 
                 Component.For<IUserStore<User, int>>()

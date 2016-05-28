@@ -36,7 +36,8 @@
         </tr>
     </table>
 
-        <h4>User groups</h4>
+    <h4>User groups</h4>
+    <table class="table">
         @foreach (var item in Model.User.StudentGroups)
         {
             <tr>
@@ -45,6 +46,7 @@
                 </td>
             </tr>
         }
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.User.Id  })

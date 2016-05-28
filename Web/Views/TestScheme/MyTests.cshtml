@@ -1,0 +1,36 @@
+﻿@model Web.Models.MyTestsViewModel
+
+@{
+    ViewBag.Title = "MyTests";
+}
+
+<h2>MyTests</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Test name</th>
+        <th>Open time</th>
+        <th>Close time</th>
+    </tr>
+
+@foreach (var item in Model.Tests) {
+    <tr>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.OpenTime
+        </td>
+        <td>
+            @item.CloseTime
+        </td>
+        <td>
+            @Html.ActionLink("Start test", "MakeTest", new { id = item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

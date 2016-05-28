@@ -62,6 +62,7 @@
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\StudentGroup.cs" />
+    <Compile Include="Entities\Test.cs" />
     <Compile Include="Entities\TestScheme.cs" />
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\User.cs" />

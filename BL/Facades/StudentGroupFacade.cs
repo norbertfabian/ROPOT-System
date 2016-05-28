@@ -42,6 +42,15 @@ namespace BL.Facades
         {
             var entity = context.StudentGroups.Find(dto.Id);
             context.Entry(entity).CurrentValues.SetValues(Mapping.Mapper.Map<StudentGroup>(dto));
+            foreach (var userDto in dto.Students)
+            {
+                var userEntity = context.Users.Find(userDto.Id);
+                if (!entity.Students.Contains(userEntity))
+                {
+                    entity.Students.Add(userEntity);
+                }
+            }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();            
         }
 

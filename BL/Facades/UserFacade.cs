@@ -72,11 +72,19 @@ namespace BL.Facades
 
         public void Update(UserDTO dto)
         {
-            //var entity = context.Users.Find(dto.Id);
-            var entity = Mapping.Mapper.Map<User>(dto);
-            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-            context.Users.Attach(entity);
+            var entity = context.Users.Find(dto.Id);
+            //Mapping.Mapper.Map<UserDTO, User>(dto, entity);
             context.Entry(entity).CurrentValues.SetValues(Mapping.Mapper.Map<User>(dto));
+            foreach (var studentGroupDto in dto.StudentGroups)
+            {
+                var studentGroupEntity = context.StudentGroups.Find(studentGroupDto.Id);
+                if (!entity.studentGroups.Contains(studentGroupEntity))
+                {
+                    entity.studentGroups.Add(studentGroupEntity);
+                }
+            }
+//            entity.studentGroups.ForEach(u => context.Entry(u).State = System.Data.Entity.EntityState.Unchanged);
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();            
         }
 

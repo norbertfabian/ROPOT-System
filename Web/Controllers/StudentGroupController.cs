@@ -114,21 +114,13 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult JoinGroup(StudentGroupUserModel model)
         {
-            //try
-            //{
-                if (studentGroupUserService.AddStudentToStudentGroupByCode(
-                    model.Student, model.Group, model.Code))
-                {
-                    return RedirectToAction("Index");
-                }
-                model.Result = "Wrong code!";
-                return View(model);
-            //}
-            //catch
-            //{
-                //model.Result = "Could't joing the group";
-              //  return View(model);
-            //}
+            if (studentGroupUserService.AddStudentToStudentGroupByCode(
+            model.Student, model.Group, model.Code))
+            { 
+                return RedirectToAction("Index", "Profile");
+            }
+            model.Result = "Wrong code!";
+            return View(model);
         }
     }
 }

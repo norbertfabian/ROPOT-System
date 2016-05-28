@@ -58,6 +58,10 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MoreLinq.Portable, Version=1.4.18916.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MoreLinq.Portable.1.4.0\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\MoreLinq.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -78,6 +82,7 @@
     <Compile Include="DTO\QuestionDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\StudentGroupDTO.cs" />
+    <Compile Include="DTO\TestDTO.cs" />
     <Compile Include="DTO\TestSchemeDTO.cs" />
     <Compile Include="DTO\TopicDTO.cs" />
     <Compile Include="DTO\UserClaimDTO.cs" />
@@ -88,12 +93,17 @@
     <Compile Include="Facades\QuestionFacade.cs" />
     <Compile Include="Facades\RoleFacade.cs" />
     <Compile Include="Facades\StudentGroupFacade.cs" />
+    <Compile Include="Facades\TestFacade.cs" />
     <Compile Include="Facades\TestSchemeFacade.cs" />
     <Compile Include="Facades\TopicFacade.cs" />
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Mapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\QuestionOptionService.cs" />
+    <Compile Include="Services\StudentGroupTestSchemeService.cs" />
     <Compile Include="Services\StudentGroupUserService.cs" />
+    <Compile Include="Services\TestService.cs" />
+    <Compile Include="Services\TopicQuestionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

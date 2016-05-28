@@ -1,0 +1,41 @@
+﻿@model Web.Models.QuestionViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    <strong>Click on details to create options for the question.</strong>
+</p>
+<table class="table">
+    <tr>
+        <th>Description</th>
+        <th>Has one correct answer</th>
+        <th>Points</th>
+    </tr>
+
+@foreach (var item in Model.Questions) {
+    <tr>
+        <td>
+            @item.Description
+        </td>
+        <td>
+            @item.OneCorrectType
+        </td>
+        <td>
+            @item.Points
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id})
+        </td>
+    </tr>
+}
+
+</table>

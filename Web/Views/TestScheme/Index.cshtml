@@ -1,0 +1,42 @@
+﻿@model Web.Models.TestSchemeViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Open time</th>
+        <th>Close time</th>
+        <th>Question amount</th>
+    </tr>
+
+@foreach (var item in Model.TestSchemes) {
+    <tr>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.OpenTime
+        </td>
+        <td>
+            @item.CloseTime
+        </td>
+        <td>
+            @item.QuestionsAmount
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

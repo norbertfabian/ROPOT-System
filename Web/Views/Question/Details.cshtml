@@ -1,0 +1,71 @@
+﻿@model Web.Models.QuestionEditModel
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Description
+        </th>
+        <td>
+            @Model.Question.Description
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Has one correct type
+        </th>
+        <td>
+            @Model.Question.OneCorrectType
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Points
+        </th>
+        <td>
+            @Model.Question.Points
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Topic
+        </th>
+        <td>
+            @Model.Question.Topic.Name
+        </td>
+    </tr>
+</table>
+
+    <h4>Options</h4>
+    <table class="table">
+        <tr>
+            <th>Text</th>
+            <th>Description</th>
+            <th>Is correct</th>
+        </tr>
+
+        @foreach (var item in Model.Question.Options)
+        {
+            <tr>
+                <td>
+                    @item.Text
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Correct
+                </td>
+            </tr>
+        }
+        @Html.ActionLink("Add option", "AddOption", new { id = Model.Question.Id })
+    </table>
+<table class="table">
+    @Html.ActionLink("Back to List", "Index") |
+
+</table>

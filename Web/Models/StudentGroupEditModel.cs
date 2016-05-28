@@ -9,7 +9,7 @@ namespace Web.Models
     public class StudentGroupEditModel { 
 
         public StudentGroupDTO StudentGroup { get; set; }
-        public string Resul { get; set; }
+        public string Result { get; set; }
 
         public StudentGroupEditModel()
         {

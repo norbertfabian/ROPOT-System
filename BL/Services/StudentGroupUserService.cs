@@ -22,13 +22,12 @@ namespace BL.Services
         public bool AddStudentToStudentGroupByCode(int studentId, int groupId, string code)
         {
             StudentGroupDTO studentGroup =  studentGroupFacade.FindById(groupId);
-            if (studentGroup.Code.Equals(code))
+            if (studentGroup.Code.Equals("") || studentGroup.Code.Equals(code))
             {
                 UserDTO student = userFacade.FindById(studentId);
                 studentGroup.Students.Add(student);
                 student.StudentGroups.Add(studentGroup);
                 studentGroupFacade.Update(studentGroup);
-                userFacade.Update(student);
                 return true;
             }
             return false;
