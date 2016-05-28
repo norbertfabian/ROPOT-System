@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class TestSchemeController : Controller
     {
         private readonly TestSchemeFacade testSchemeFacade;
@@ -33,6 +34,7 @@ namespace Web.Controllers
         }
 
         // GET: TestScheme
+        [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             var testSchemeViewModel = new TestSchemeViewModel()
@@ -43,6 +45,7 @@ namespace Web.Controllers
         }
 
         // GET: TestScheme/Details/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Details(int id)
         {
             var testSchemeEditModel = new TestSchemeEditModel()
@@ -53,6 +56,7 @@ namespace Web.Controllers
         }
 
         // GET: TestScheme/Create
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             var testSchemeEditModel = new TestSchemeEditModel()
@@ -64,6 +68,7 @@ namespace Web.Controllers
         }
 
         // POST: TestScheme/Create
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Create(TestSchemeEditModel model)
         {
@@ -79,6 +84,7 @@ namespace Web.Controllers
         }
 
         // GET: TestScheme/Edit/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int id)
         {
             var testSchemeEditModel = new TestSchemeEditModel
@@ -91,6 +97,7 @@ namespace Web.Controllers
         }
 
         // POST: TestScheme/Edit/5
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Edit(TestSchemeEditModel model)
         {
@@ -106,6 +113,7 @@ namespace Web.Controllers
         }
 
         // GET: TestScheme/Delete/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int id)
         {
             testSchemeFacade.RemoveById(id);

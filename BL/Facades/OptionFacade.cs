@@ -33,6 +33,13 @@ namespace BL.Facades
             context.SaveChanges();
         }
 
+        public void RemoveById(int id)
+        {
+            var toDelete = context.Options.Where(x => x.Id == id).FirstOrDefault();
+            context.Options.Remove(toDelete);
+            context.SaveChanges();
+        }
+
         public void Update(OptionDTO dto)
         {
             Option entity = Mapping.Mapper.Map<Option>(dto);

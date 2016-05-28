@@ -1,0 +1,30 @@
+﻿@model Web.Models.TestViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>Test name</th>
+        <th>Points/Total points</th>
+    </tr>
+
+@foreach (var item in Model.Tests) {
+    <tr>
+        <td>
+            @item.TestScheme.Name
+        </td>
+        <td>
+            @item.Score/@item.MaxPoints
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

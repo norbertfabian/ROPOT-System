@@ -11,6 +11,7 @@ using BL.Services;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class StudentGroupController : Controller
     {
         private readonly StudentGroupFacade studentGroupFacade;
@@ -24,6 +25,7 @@ namespace Web.Controllers
         }
 
         // GET: StudentGroup
+        [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             var studentGroupViewModel = new StudentGroupViewModel()
@@ -34,6 +36,7 @@ namespace Web.Controllers
         }
 
         // GET: StudentGroup/Details/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Details(int id)
         {
             var studentGroupViewModel = new StudentGroupEditModel()
@@ -44,6 +47,7 @@ namespace Web.Controllers
         }
 
         // GET: StudentGroup/Create
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             var studentGroupEditModel = new StudentGroupEditModel()
@@ -53,6 +57,7 @@ namespace Web.Controllers
         }
 
         // POST: StudentGroup/Create
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Create(StudentGroupEditModel model)
         {
@@ -68,6 +73,7 @@ namespace Web.Controllers
         }
 
         // GET: StudentGroup/Edit/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int id)
         {
             var studentGroupEditModel = new StudentGroupEditModel
@@ -78,6 +84,7 @@ namespace Web.Controllers
         }
 
         // POST: StudentGroup/Edit/5
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Edit(StudentGroupEditModel model)
         {
@@ -93,6 +100,7 @@ namespace Web.Controllers
         }
 
         // GET: StudentGroup/Delete/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int id)
         {
             studentGroupFacade.RemoveById(id);

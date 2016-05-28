@@ -28,7 +28,7 @@
             @item.CloseTime
         </td>
         <td>
-            @Html.ActionLink("Start test", "MakeTest", new { id = item.Id }) |
+            @Html.ActionLink("Start test", "../Test/MakeTest/"+item.Id, "Test")
         </td>
     </tr>
 }

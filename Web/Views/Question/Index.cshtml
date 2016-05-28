@@ -15,6 +15,7 @@
 <table class="table">
     <tr>
         <th>Description</th>
+        <th>Topic</th>
         <th>Has one correct answer</th>
         <th>Points</th>
     </tr>
@@ -23,6 +24,9 @@
     <tr>
         <td>
             @item.Description
+        </td>
+        <td>
+            @item.Topic.Name
         </td>
         <td>
             @item.OneCorrectType

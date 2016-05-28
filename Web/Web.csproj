@@ -177,6 +177,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\StudentGroupController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TestSchemeController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="DataInstaller.cs" />
@@ -192,8 +193,10 @@
     <Compile Include="Models\StudentGroupEditModel.cs" />
     <Compile Include="Models\StudentGroupUserModel.cs" />
     <Compile Include="Models\StudentGroupViewModel.cs" />
+    <Compile Include="Models\TestEditModel.cs" />
     <Compile Include="Models\TestSchemeEditModel.cs" />
     <Compile Include="Models\TestSchemeViewModel.cs" />
+    <Compile Include="Models\TestViewModel.cs" />
     <Compile Include="Models\TopicDetailModel.cs" />
     <Compile Include="Models\TopicEditViewModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
@@ -260,6 +263,8 @@
     <Content Include="Views\Question\AddOption.cshtml" />
     <Content Include="Views\TestScheme\MyTests.cshtml" />
     <Content Include="Views\TestScheme\Details.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Test\MakeTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

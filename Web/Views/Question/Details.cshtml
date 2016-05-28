@@ -61,11 +61,14 @@
                 <td>
                     @item.Correct
                 </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteOption", new { id = item.Id })
+                </td>
             </tr>
         }
         @Html.ActionLink("Add option", "AddOption", new { id = Model.Question.Id })
     </table>
 <table class="table">
-    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Back to List", "Index")
 
 </table>

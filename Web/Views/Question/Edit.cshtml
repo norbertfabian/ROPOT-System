@@ -38,6 +38,35 @@
                "Please select Topic")
             </div>
         </div>
+
+        <h4>Options</h4>
+        <table class="table">
+            <tr>
+                <th>Text</th>
+                <th>Description</th>
+                <th>Is correct</th>
+            </tr>
+
+            @foreach (var item in Model.Question.Options)
+            {
+                <tr>
+                    <td>
+                        @item.Text
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Correct
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteOption", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+            @Html.ActionLink("Add option", "AddOption", new { id = Model.Question.Id })
+        </table>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

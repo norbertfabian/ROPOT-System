@@ -9,6 +9,7 @@ using BL.Services;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class QuestionController : Controller
     {
         private readonly QuestionFacade questionFacade;
@@ -28,6 +29,7 @@ namespace Web.Controllers
         }
 
         // GET: Question
+        [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             var questionViewModel = new QuestionViewModel()
@@ -38,6 +40,7 @@ namespace Web.Controllers
         }
 
         // GET: Question/Details/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Details(int id)
         {
             var questionEditModel = new QuestionEditModel()
@@ -48,6 +51,7 @@ namespace Web.Controllers
         }
 
         // GET: Question/Create
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             var questionEditModel = new QuestionEditModel()
@@ -58,6 +62,7 @@ namespace Web.Controllers
         }
 
         // POST: Question/Create
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Create(QuestionEditModel model)
         {
@@ -73,6 +78,7 @@ namespace Web.Controllers
         }
 
         // GET: Question/Edit/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int id)
         {
             var questionEditModel = new QuestionEditModel()
@@ -84,6 +90,7 @@ namespace Web.Controllers
         }
 
         // POST: Question/Edit/5
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Edit(QuestionEditModel model)
         {
@@ -99,13 +106,25 @@ namespace Web.Controllers
         }
 
         // GET: Question/Delete/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int id)
         {
             questionFacade.RemoveById(id);
             return RedirectToAction("Index");
         }
 
+        // GET: Question/DeleteOption/5
+        [Authorize(Roles = "Teacher")]
+        public ActionResult DeleteOption(int id)
+        {
+            var option = optionFacade.FindById(id);
+            int questionId = option.Question.Id;
+            optionFacade.RemoveById(option.Id);
+            return RedirectToAction("Details/" + questionId);
+        }
+
         // GET: Question/AddOption/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult AddOption(int id)
         {
             var questionAddOptionModel = new QuestionAddOptionModel()
@@ -116,6 +135,7 @@ namespace Web.Controllers
         }
 
         // POST: Question/AddOption/5
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult AddOption(QuestionAddOptionModel model)
         {

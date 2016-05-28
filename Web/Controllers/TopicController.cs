@@ -8,6 +8,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class TopicController : Controller
     {
 
@@ -19,6 +20,7 @@ namespace Web.Controllers
         }
 
         // GET: Topic
+        [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             var topicViewModel = new TopicViewModel()
@@ -29,6 +31,7 @@ namespace Web.Controllers
         }
 
         // GET: Topic/Create
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             var topicEditViewModel = new TopicEditViewModel()
@@ -39,6 +42,7 @@ namespace Web.Controllers
         }
 
         // POST: Topic/Create
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Create(TopicEditViewModel model)
         {
@@ -54,6 +58,7 @@ namespace Web.Controllers
         }
 
         // GET: Topic/Edit/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int id)
         {
             var topicEditViewModel = new TopicEditViewModel()
@@ -65,6 +70,7 @@ namespace Web.Controllers
         }
 
         // POST: Topic/Edit/5
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public ActionResult Edit(TopicEditViewModel model)
         {
@@ -80,6 +86,7 @@ namespace Web.Controllers
         }
 
         // GET: Topic/Delete/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int id)
         {
             topicFacade.RemoveById(id);
