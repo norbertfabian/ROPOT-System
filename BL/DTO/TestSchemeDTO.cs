@@ -14,10 +14,8 @@ namespace BL.DTO
         public List<TopicDTO> Topics { get; set; }
         public int QuestionsAmount { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:dd\/MM \/yyyy}")]
-        public DateTime TestTime { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:dd\/MM\/yyyy}")]
         public DateTime OpenTime { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:dd\/MM\/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:dd\/MM \/yyyy}")]
         public DateTime CloseTime { get; set; }
         public List<StudentGroupDTO> Groups { get; set; }
 

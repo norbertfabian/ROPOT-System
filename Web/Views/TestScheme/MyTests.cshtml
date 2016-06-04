@@ -28,7 +28,14 @@
             @item.CloseTime
         </td>
         <td>
-            @Html.ActionLink("Start test", "../Test/MakeTest/"+item.Id, "Test")
+            @if (DateTime.Now > item.OpenTime && DateTime.Now < item.CloseTime)
+            {
+                @Html.ActionLink("Start test", "../Test/MakeTest/" + item.Id, "Test")
+            }
+            else
+            {
+                <i>Test is not open.</i>
+            }
         </td>
     </tr>
 }

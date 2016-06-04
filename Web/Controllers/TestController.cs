@@ -43,17 +43,21 @@ namespace Web.Controllers
         // GET: Test/MakeTest/5
         public ActionResult MakeTest(int id)
         {
-            var testEditModel = new TestEditModel()
+            var test = testService.MakeTest(Int32.Parse(User.Identity.GetUserId()), id);
+            Dictionary<int, bool> answers = new Dictionary<int, bool>();
+            foreach(var question in test.Questions.Keys)
             {
-                Test = testService.MakeTest(Int32.Parse(User.Identity.GetUserId()), id)
-            };
-            foreach(var question in testEditModel.Test.Questions)
-            {
-                foreach(var option in question.Key.Options)
+                foreach(var option in question.Options)
                 {
-                    testEditModel.Answers.Add(option.Id, false);
+                    answers.Add(option.Id, false);
                 }
             }
+
+            var testEditModel = new TestEditModel()
+            {
+                Test = test,
+                Answers = answers
+            };
             return View(testEditModel);
         }
 

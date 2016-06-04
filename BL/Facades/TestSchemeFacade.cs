@@ -47,15 +47,30 @@ namespace BL.Facades
         public void RemoveById(int id)
         {
             var toDelete = context.TestSchemes.Where(x => x.Id == id).FirstOrDefault();
+            toDelete.Groups.Clear();
+            toDelete.Topics.Clear();
             context.TestSchemes.Remove(toDelete);
             context.SaveChanges();
         }
 
         public void Update(TestSchemeDTO dto)
         {
-            TestScheme entity = Mapping.Mapper.Map<TestScheme>(dto);
+            Update(dto, new List<int>(), new List<int>());
+        }
+
+        public void Update(TestSchemeDTO dto, List<int> topicsIds, List<int> studentGroupIds)
+        {
+            TestScheme entity = context.TestSchemes.Find(dto.Id);
             Mapping.Mapper.Map<TestSchemeDTO, TestScheme>(dto, entity);
-            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+
+            foreach (var topicId in topicsIds)
+            {
+                entity.Topics.Add(context.Topics.Find(topicId));
+            }
+            foreach (var studentGroupId in studentGroupIds)
+            {
+                entity.Groups.Add(context.StudentGroups.Find(studentGroupId));
+            }
             context.SaveChanges();
         }
 

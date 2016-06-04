@@ -10,7 +10,8 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Test)
+    @Html.HiddenFor(m => m.Test)
+    @Html.HiddenFor(m => m.Answers)
 
     foreach (var item in Model.Test.Questions)
     {
@@ -40,15 +41,17 @@
     <div class="row">
         @foreach (var option in item.Key.Options)
         {
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-11">
-                    @Html.CheckBoxFor(m => m.Answers[option.Id])
-                    @option.Text
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        @Html.EditorFor(model => model.Answers[option.Id], new { htmlAttribute = new { @class = "form-control" } })
+                        @option.Text
+                    </div>
                 </div>
             </div>
-        }
-    </div>
+         }
+      </div>
     }
 
     <div class="form-horizontal">

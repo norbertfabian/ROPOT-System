@@ -12,10 +12,12 @@ namespace BL.DTO
         public string Name { get; set; }
         public string Code { get; set; }
         public List<UserDTO> Students { get; set; }
+        public virtual List<TestSchemeDTO> TestSchemes { get; set; }
 
         public StudentGroupDTO()
         {
             Students = new List<UserDTO>();
+            TestSchemes = new List<TestSchemeDTO>();
         }
     }
 }

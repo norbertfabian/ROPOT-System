@@ -12,9 +12,11 @@ namespace DAL.Entities
         public string Name { get; set; }
         public string Code { get; set; }
         public virtual List<User> Students { get; set; }
+        public virtual List<TestScheme> TestSchemes { get; set; }
         public StudentGroup()
         {
             Students = new List<User>();
+            TestSchemes = new List<TestScheme>();
         }
     }
 }

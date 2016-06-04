@@ -12,10 +12,12 @@ namespace DAL.Entities
         public string Name { get; set; }
         public virtual List<Topic> Childs { get; set; }
         public virtual Topic Parent { get; set; }
-        public virtual List<Question> questions { get; set; }
+        public virtual List<Question> Questions { get; set; }
+        public virtual List<TestScheme> TestSchemes { get; set; }
         public Topic()
         {
-
+            Questions = new List<Question>();
+            TestSchemes = new List<TestScheme>();
         }
     }
 }

@@ -12,53 +12,27 @@
             <a href="/Account/Register" class="btn btn-primary btn-lg">Register &raquo;</a>
         }
     </p>
-</div>
+</div>  
 
-<div class="row">
-@if (User.Identity.IsAuthenticated)
-{
-    <div class="col-md-4">
-        <h2>My tests</h2>
-        <p>List all your avilable tests.</p>
-        <p><a class="btn btn-default" href="/TestScheme/MyTests">List &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Score</h2>
-        <p>See your score.</p>
-        <p><a class="btn btn-default" href="/Test">List &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Join group</h2>
-        <p>Join to other groups.</p>
-        <p><a class="btn btn-default" href="/StudentGroup/JoinGroup">Join &raquo;</a></p>
-    </div>
-}
-@if (User.IsInRole("Teacher"))
-{
-    <div class="col-md-4">
-        <h2>Topics</h2>
-        <p>List the topics.</p>
-        <p><a class="btn btn-default" href="/Topic">List &raquo;</a></p>
-        <p><a class="btn btn-default" href="/Topic/Create">Create &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Student Groups</h2>
-        <p>List student groups.</p>
-        <p><a class="btn btn-default" href="/StudentGroup">List &raquo;</a></p>
-        <p><a class="btn btn-default" href="/StudentGroup/Create">Create &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Test schemes</h2>
-        <p>List test schemes.</p>
-        <p><a class="btn btn-default" href="/TestScheme">List &raquo;</a></p>
-        <p><a class="btn btn-default" href="/TestScheme/Create">Create &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Questions</h2>
-        <p>List the questions</p>
-        <p><a class="btn btn-default" href="/Question">List &raquo;</a></p>
-        <p><a class="btn btn-default" href="/Question/Create">Create &raquo;</a></p>
-    </div>
-}
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Before start.</h4>
+            <ol>
+                <li>Run seed method to insert roles and Base topic to.</li>
+            </ol>
+        </div>
+        <div class="col-md-6">
+            <h4>How to use?</h4>
+            <ol>
+                <li>Register a user with role teacher or student (just teacher can manage tests, topics, etc.)</li>
+                <li>Create topics needed in tests in the Topics section. Topics are structured into tree structure. Every topic needs a parent topic (base topic is the root)</li>
+                <li>Create Questions for the topics in the Questions section. After creating the question, you can add options in the question detail section.</li>
+                <li>Create student groups for the students. Students will have to enter the setted up code to join the group.</li>
+                <li>Create Test scheme. Topics and student groups are needed to setup the test scheme. Questions will be randomly selected from the assigned questions to the selected topics when the student lunches the test.</li>
+                <li>That's it. Now the student's can join the student groups using the student group code and see the available tests in the My tests section.</li>
+            </ol>
+        </div>
 
+    </div>
 </div>

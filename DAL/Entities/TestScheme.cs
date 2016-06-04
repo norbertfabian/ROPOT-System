@@ -12,7 +12,6 @@ namespace DAL.Entities
         public string Name { get; set; }
         public virtual List<Topic> Topics { get; set; }
         public int QuestionsAmount { get; set; }
-        public DateTime TestTime { get; set; }
         public DateTime OpenTime { get; set; }
         public DateTime CloseTime { get; set; }
         public virtual List<StudentGroup> Groups { get; set; }

@@ -103,7 +103,7 @@ namespace Web.Controllers
         {
             try
             {
-                testSchemeFacade.Update(model.TestScheme);
+                testSchemeFacade.Update(model.TestScheme, model.SelectedTopics, model.SelectedStudentGroups);
                 return RedirectToAction("Index");
             }
             catch

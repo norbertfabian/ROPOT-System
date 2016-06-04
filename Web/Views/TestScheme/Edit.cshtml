@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StudentGroups, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model => model.TestScheme.Groups,
+                @Html.ListBoxFor(model => model.SelectedStudentGroups,
                 new MultiSelectList(Model.StudentGroups, "Id", "Name"),
                 new { style = "display:block;" })
                 <i>Hold ctrl for selecting more items.</i>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Topics, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model => model.TestScheme.Topics,
+                @Html.ListBoxFor(model => model.SelectedTopics,
                 new MultiSelectList(Model.Topics, "Id", "Name"),
                 new { style = "display:block;" })
                 <i>Hold ctrl for selecting more items.</i>
@@ -66,16 +66,6 @@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.TestScheme.QuestionsAmount, new { htmlAttribute = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.TestScheme.QuestionsAmount, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.TestScheme.TestTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TestScheme.TestTime, new { htmlAttribute = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TestScheme.TestTime, "", new { @class = "text-danger" })
-                    <i>Use days in format dd/mm/yy.</i>
                 </div>
             </div>
         </div>

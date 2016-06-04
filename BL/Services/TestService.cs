@@ -80,16 +80,22 @@ namespace BL.Services
             var testScheme = testSchemeFacade.FindById(testSchemeId);
             var allQuestions = topicQuestionService.GetQuestionsForTopics(
                 testScheme.Topics.Select(t => t.Id).ToList());
-
-            Random rnd = new Random();
-            for (int i = 0; i < testScheme.QuestionsAmount; i++) { 
-                int r = rnd.Next(allQuestions.Count);
-                questions.Add(allQuestions[r]);
-                allQuestions.RemoveAt(r);
-                if (allQuestions.Count == 0)
-                    break;
+            if (testScheme.QuestionsAmount < allQuestions.Count)
+            {
+                Random rnd = new Random();
+                for (int i = 0; i < testScheme.QuestionsAmount; i++)
+                {
+                    int r = rnd.Next(allQuestions.Count);
+                    questions.Add(allQuestions[r]);
+                    allQuestions.RemoveAt(r);
+                    if (allQuestions.Count == 0)
+                        break;
+                }
             }
-
+            else
+            {
+                questions.AddRange(allQuestions);
+            }
             return questions;
         }
     }

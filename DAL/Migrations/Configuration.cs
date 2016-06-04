@@ -27,6 +27,7 @@ namespace DAL.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
             context.Topics.AddOrUpdate(
                 new Topic { Name = "BaseTopic" }
                 );
@@ -35,6 +36,8 @@ namespace DAL.Migrations
                 new Role { Name = "Student"},
                 new Role { Name = "Teacher"}
                 );
+
+
         }
     }
 }
